@@ -1,2 +1,2 @@
-# MBTA-CLI
-A command line interface to obtain MBTA schedules, alerts, routes, and predictions.
+# MBTA-App
+A work-in-progress desktop application for the MBTA.
