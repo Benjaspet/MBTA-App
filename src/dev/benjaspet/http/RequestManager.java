@@ -23,17 +23,16 @@ public final class RequestManager {
 
   public JsonObject get(String url) throws RuntimeException {
 
-    System.out.println(apiKey);
-
     Request request = new Request.Builder()
         .addHeader("Accept", "application/json")
         .addHeader("x-api-key", this.apiKey)
         .url(url)
         .build();
 
-    System.out.println("Request: " + request.url());
-
     try (Response response = client.newCall(request).execute()) {
+      if (!response.isSuccessful()) {
+        throw new RuntimeException("Unexpected code " + response);
+      }
       ResponseBody body = response.body();
       System.out.println("Response: " + response.code());
       if (body == null) {
